@@ -21,7 +21,6 @@ class PrototypesController < ApplicationController
     @prototypes = Prototype.find_by_sql(query)
   end
 
-  
 
   def new
     # newアクションにインスタンス変数@prototypeを定義
