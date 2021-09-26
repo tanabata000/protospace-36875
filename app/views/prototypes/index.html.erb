@@ -1,0 +1,28 @@
+<main class="main">
+  <div class="inner">
+     <%# トップページにログインユーザ名を表示 %>
+     <%# link_toでマイページに遷移できるよう準備。%>
+        <%#　deviseメソッドのcurrent_userメソッドによりUserモデルよりユーザーのカラム情報を取得し、式展開により画面に表示させる %>
+      <div class="greeting">
+         <% if user_signed_in? %>
+        こんにちは、
+        <%= link_to "#{current_user.name}さん" , user_path(current_user.id), method: :get, class: :greeting__link %>
+        <% end %>
+      </div>
+      <div class="contents row">
+          <%# collection:指定したインスタンス変数の中にある要素の数だけ、部分テンプレートが繰り返し表示される %> 
+          <%# @prototypes ＝ Prototypeモデル内の全レコード%> 
+          <%# prototypesテーブル内のレコード（prototype）の数だけ、部分テンプレートを繰り返す %>
+          <%# 部分テンプレート（_prototype.html.erb）に移行,部分テンプレート内で@prototypesを使用  %>
+          <%= render partial: "prototype", collection: @prototypes %>
+          
+          <%# prototypeテーブル内に紐づく全画像を表示。各画像にレコード（パラメーター）情報がつく %>
+        
+      <div class="contents row">
+    <%# // ログインしているときは上記を表示する %>
+    
+    <div class="card__wrapper">
+      <%# 投稿機能実装後、部分テンプレートでプロトタイプ投稿一覧を表示する %>
+    </div>
+  </div>
+</main>

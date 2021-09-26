@@ -1,0 +1,17 @@
+<%# index.html.erbの部分テンプレート %>
+<%# collectionによりprototypeテーブルのレコードの数だけ処理を繰り返す %>
+<%# prototypeにprototype.id（レコード）が1,2,3...と順番に入る%>
+<div class="card">
+  <%# image_tagによりimg要素を生成（prototypeテーブルのimageカラム参照）%>
+  <%# URLの生成　/prototypes/:id =>  /prototypes/prototype.idの値 　　prototypes#showのURIパターンにprototype.id（prototypeテーブルのidの値）を入れてURLを生成%>
+  <%# URL生成後、prototypesコントローラのshowアクションへ遷移 %>
+  <%= link_to image_tag(prototype.image, class: :card__img ), prototype_path(prototype.id), method: :get %>
+  <div class="card__body">
+     <%# prototypeテーブルのtitleカラム参照、トップページ（root_path）に1つのprototypeレコードを取得させる%>
+    <%= link_to prototype.title, root_path(prototype), class: :card__title%>
+    <p class="card__summary">
+      <%= prototype.catch_copy %>
+    </p>
+    <%= link_to prototype.user.name, root_path(@prototypes), class: :card__user %>
+  </div>
+</div>
