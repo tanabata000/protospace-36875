@@ -68,7 +68,7 @@ class PrototypesController < ApplicationController
     @prototype = Prototype.find(params[:id])
     # レコード（params）情報を更新できた場合トップページへ遷移
     if @prototype.update(prototype_params)
-      redirect_to root_path
+      redirect_to prototype_path
 
       # できなかった場合は編集ページに戻る
     else
