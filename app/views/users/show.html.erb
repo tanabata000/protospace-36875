@@ -3,7 +3,7 @@
   <div class="inner">
     <div class="user__wrapper">
       <h2 class="page-heading">
-         <%= "#{current_user.name}さんの情報" %>
+         <%= "#{@user.name}さんの情報" %>
       </h2>
       <table class="table">
         <tbody>
@@ -26,7 +26,7 @@
         </tbody>
       </table>
       <h2 class="page-heading">
-        <%= "#{current_user.name}さんのプロトタイプ"%>
+        <%= "#{@user.name}さんのプロトタイプ"%>
       </h2>
       <div class="user__card">
         <%# 部分テンプレートでそのユーザーが投稿したプロトタイプ投稿一覧を表示する %>

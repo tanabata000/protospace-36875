@@ -7,7 +7,7 @@
       </p>
       <%# @prototype ＝ 画像に紐づいたPrototypeモデルのid情報から1つのレコードを取得 %>
       <%# user_path(@prototype.user_id) ＝ 参照中のPrototypeの1つのレコード情報からUser_id情報を取得 %>
-      <%= link_to "by #{current_user.name}", user_path(@prototype.user_id), method: :get, class: :prototype__user %>
+      <%= link_to "by #{@prototype.user.name}", user_path(@prototype.user_id), method: :get, class: :prototype__user %>
       
       <%# 現在ログイン中のユーザがプロトタイプの投稿者が同じであれば以下を表示する %>
       <%# @prototype ＝ 画像に紐づいたPrototypeモデルのid情報から1つのレコードを取得 %>
