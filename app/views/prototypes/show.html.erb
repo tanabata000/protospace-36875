@@ -2,10 +2,12 @@
   <div class="inner">
     <div class="prototype__wrapper">
       <p class="prototype__hedding">
-        <%= "プロトタイプのタイトル"%>
+        <%# 取得したprototypeのレコード情報から、titleカラムの値を表示 %>
+        <%= @prototype.title %>
       </p>
       <%# @prototype ＝ 画像に紐づいたPrototypeモデルのid情報から1つのレコードを取得 %>
-      <%= link_to @prototype.title, root_path, class: :prototype__user %>
+      <%# user_path(@prototype.user_id) ＝ 参照中のPrototypeの1つのレコード情報からUser_id情報を取得 %>
+      <%= link_to "by #{current_user.name}", user_path(@prototype.user_id), method: :get, class: :prototype__user %>
       
       <%# 現在ログイン中のユーザがプロトタイプの投稿者が同じであれば以下を表示する %>
       <%# @prototype ＝ 画像に紐づいたPrototypeモデルのid情報から1つのレコードを取得 %>
