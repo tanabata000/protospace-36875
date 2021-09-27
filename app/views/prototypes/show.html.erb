@@ -45,7 +45,7 @@
         <%# 投稿フォームがログイン状態のユーザーにしか表示されないようにする %>
         <%# commentsのルーティングがprototypesにネストされているため引数に@prototype, @commentの2つを渡している %>
         <%# @prototype = URIのidから検索したprototypeテーブルのレコード情報 %>
-        <%# @comments = URLのレコード情報に紐づくcommentsテーブルの全レコード情報 %>
+        <%# @comment = コメントを保存するための新規レコード %>
         <%= form_with model: [@prototype, @comment],local: true do |f|%>
           <div class="field">
             <%= f.label :content, "コメント" %><br />
@@ -59,18 +59,16 @@
       <% end %>
         <%# // ログインしているユーザーには上記を表示する %>
         <ul class="comments_lists">
-    
-          <%# @comments = URLのレコード情報に紐づくcommentsテーブルの全レコード情報 %>
+          <%# @comments = URLのprototype_id情報に紐づくcommentsテーブルの全レコード情報 %>
           <%# 投稿に紐づくコメントを一覧する処理を記述する %>
           <% @comments.each do |comment|%>
             <li class="comments_list">
               <%= comment.content %>
-              <%= link_to current_user.name, user_path(current_user), method: :get, class: :comment_user %>
+              <%# 表示名：commentに紐づくuser.name, リンク先：user_path(HTTPメソッド:GET) ＝ /users/:id（:id = commentテーブルに紐づくuser.id） %>
+              <%= link_to comment.user.name, user_path(comment.user.id), method: :get, class: :comment_user %>
             </li>
           <% end %>  
-          <%# // 投稿に紐づくコメントを一覧する処理を記述する %>
-          
-          
+          <%# // 投稿に紐づくコメントを一覧する処理を記述する %>         
         </ul>
       </div>
     </div>
