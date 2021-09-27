@@ -12,7 +12,10 @@ class CommentsController < ApplicationController
       # リクエストにより送られてきたparamsのキー（:prototype_id）に紐づいた値を取得
       # Prototypeモデルからprototype_idの値が一致したレコードを検索し、@prototypeに代入
       @prototype = Prototype.find(params[:prototype_id])
+      
       @comment = Comment.new
+      # 画像（prototype）に紐づくcommentsのレコードを取得し、@commentsに代入
+      @comments = @prototype.comments
       # prototypesのビューファイルのshowを表示
       render "prototypes/show"
     end
