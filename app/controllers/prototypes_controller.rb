@@ -30,7 +30,7 @@ class PrototypesController < ApplicationController
 
   def create
     # Prototypeモデルの全レコード情報を取得
-    @prototype = Prototype.create(prototype_params)
+    @prototype = Prototype.new(prototype_params)
     if @prototype.save
 
       # 保存できた場合はトップページ（prototypes#index）
